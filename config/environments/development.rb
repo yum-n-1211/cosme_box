@@ -75,7 +75,7 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   # COSME BOX
   config.hosts << "bb6559411bc1461e8900d8e71ba41b79.vfs.cloud9.us-east-1.amazonaws.com"
-  
+
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
