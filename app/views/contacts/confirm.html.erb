@@ -1,7 +1,7 @@
 <h1>お問い合わせ</h1>
 
 
-<%= form_with @contact do |f| %>
+<%= form_with model: @contact, url: contacts_thanks_path do |f| %>
   <table class="table">
     <tr>
       <th>名前</th>
