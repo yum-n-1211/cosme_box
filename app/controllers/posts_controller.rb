@@ -1,5 +1,10 @@
 class PostsController < ApplicationController
   def new
+    @post = Post.new
+    @post_review = PostReview.new
+  end
+
+  def create
   end
 
   def show
@@ -10,4 +15,8 @@ class PostsController < ApplicationController
 
   def edit
   end
+
+  def update
+  end
+
 end

@@ -1,2 +1,46 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h2>新規投稿</h2>
+
+<%= form_with model: @post_review, url: posts_path do |f| %>
+
+  <div class="field">
+    <%= f.label :"商品名" %><br />
+    <%= f.text_field :item_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"アイテムカテゴリ" %><br />
+    <%= f.select :item_genre, PostReview.item_genres.keys, {prompt: '選択してください'} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"アイテムブランド" %><br />
+    <%= f.text_field :item_brand %>
+  </div>
+
+  <div class="field" id="review_star">
+    <%= f.label :"評価" %>
+    <%= f.hidden_field :star, id: :review_star %>
+  </div>
+
+  <script>
+    $('#review_star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'post_review[star]',
+      half: true,
+    });
+  </script>
+
+  <div class="field">
+    <%= f.label :"オススメポイント" %><br />
+    <%= f.text_field :good_point %>
+  </div>
+
+
+  <%= f.hidden_field :post_id, :value => @post.id %>
+
+　<%= f.submit %>
+<% end %>
+
