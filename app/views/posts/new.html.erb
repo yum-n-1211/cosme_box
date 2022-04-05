@@ -1,6 +1,6 @@
 <h2>新規投稿</h2>
 
-<%= form_with model: @post_review, url: posts_path do |f| %>
+<%= form_with model: @post_form, url: posts_path, local:true do |f| %>
 
   <div class="field">
     <%= f.label :"商品名" %><br />
@@ -28,7 +28,7 @@
       starOff:  '<%= asset_path('star-off.png') %>',
       starOn : '<%= asset_path('star-on.png') %>',
       starHalf: '<%= asset_path('star-half.png') %>',
-      scoreName: 'post_review[star]',
+      scoreName: 'post_form[star]',
       half: true,
     });
   </script>
@@ -38,9 +38,9 @@
     <%= f.text_field :good_point %>
   </div>
 
+  <div class="actions">
+　  <%= f.submit "投稿", name: nil %>
+　</div>
 
-  <%= f.hidden_field :post_id, :value => @post.id %>
-
-　<%= f.submit %>
 <% end %>
 
