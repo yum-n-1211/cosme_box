@@ -1,28 +1,25 @@
 <h2>新規投稿</h2>
 
-<%= form_with model: @post_form, url: posts_path, local:true do |f| %>
+<%= form_with model: @post, url: posts_path, local:true do |f| %>
 
+<%= f.fields_for :post_reviews do |fs| %>
   <div class="field">
-    <%= f.label :"商品名" %><br />
-    <%= f.text_field :item_name %>
+    <%= fs.label :"商品名" %><%= fs.text_field :item_name %>
   </div>
 
   <div class="field">
-    <%= f.label :"アイテムカテゴリ" %><br />
-    <%= f.select :item_genre, PostReview.item_genres.keys, {prompt: '選択してください'} %>
+    <%= fs.label :"カテゴリ" %><%= fs.select :item_genre, PostReview.item_genres.keys, {prompt: '選択してください'} %>
   </div>
 
   <div class="field">
-    <%= f.label :"アイテムブランド" %><br />
-    <%= f.text_field :item_brand %>
+    <%= fs.label :"ブランド" %><%= fs.text_field :item_brand %>
   </div>
 
   <div class="field" id="review_star">
-    <%= f.label :"評価" %>
-    <%= f.hidden_field :star, id: :review_star %>
+    <%= fs.label :"評価" %><%= fs.text_field :star, id: :review_star %>
   </div>
 
-  <script>
+  <!--<script>
     $('#review_star').raty({
       size     : 36,
       starOff:  '<%= asset_path('star-off.png') %>',
@@ -31,16 +28,15 @@
       scoreName: 'post_form[star]',
       half: true,
     });
-  </script>
+  </script>-->
 
   <div class="field">
-    <%= f.label :"オススメポイント" %><br />
-    <%= f.text_field :good_point %>
+    <%= fs.label :"オススメポイント" %> <%= fs.text_field :good_point %>
   </div>
 
+  <% end %>
+
   <div class="actions">
-　  <%= f.submit "投稿", name: nil %>
+　  <%= f.submit "投稿", name: nil, class: "btn btn-dark" %>
 　</div>
-
 <% end %>
-
