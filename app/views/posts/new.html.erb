@@ -3,6 +3,9 @@
 <%= form_with model: @post, url: posts_path, local:true do |f| %>
 
 <%= f.fields_for :post_reviews do |fs| %>
+
+  <%= f.file_field :image, , accept: "image/*" %>
+
   <div class="field">
     <%= fs.label :"商品名" %><%= fs.text_field :item_name %>
   </div>

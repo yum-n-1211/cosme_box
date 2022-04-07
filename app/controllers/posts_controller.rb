@@ -19,6 +19,8 @@ class PostsController < ApplicationController
   end
 
   def index
+    @post = Post.all
+    @post_review = PostReview.all
   end
 
   def edit
@@ -31,7 +33,7 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post)
-    .permit(post_reviews_attributes:[:id, :item_name, :item_genre, :item_brand, :good_point, :image_id, :post_id, :star])
+    .permit(post_reviews_attributes:[:id, :item_name, :item_genre, :item_brand, :good_point, :image, :post_id, :star])
     .merge(user_id: current_user.id)
   end
 

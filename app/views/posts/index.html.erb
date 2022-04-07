@@ -1,2 +1,9 @@
 <h1>Posts#index</h1>
 <p>Find me in app/views/posts/index.html.erb</p>
+
+画像
+<% @post_review.each do |post_review| %>
+<%= image_tag post_review.get_image, size: "200x200" %>
+
+<%= post_review.item_name %>
+<% end %>
