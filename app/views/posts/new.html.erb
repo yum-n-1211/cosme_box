@@ -1,45 +1,35 @@
-<h2>新規投稿</h2>
+<table class="table-sm">
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name -商品名-</th>
+      <th>genre -カテゴリ--</th>
+      <th>brand -ブランド</th>
+      <th>star -評価-<br>0.5刻み/満点5点</th>
+      <th>review -コメント-</th>
+    </tr>
+  </thead>
+
 
 <%= form_with model: @post, url: posts_path, local:true do |f| %>
 
-<%= f.fields_for :post_reviews do |fs| %>
-
-  <%= f.file_field :image, accept: "image/*" %>
-
-  <div class="field">
-    <%= fs.label :"商品名" %><%= fs.text_field :item_name %>
-  </div>
-
-  <div class="field">
-    <%= fs.label :"カテゴリ" %><%= fs.select :item_genre, PostReview.item_genres.keys, {prompt: '選択してください'} %>
-  </div>
-
-  <div class="field">
-    <%= fs.label :"ブランド" %><%= fs.text_field :item_brand %>
-  </div>
-
-  <div class="field" id="review_star>">
-    <%= fs.label :"評価" %><%= fs.text_field :star, id: :review_star %>
-  </div>
-
-  <!--<script>
-    $('#review_star').raty({
-      size     : 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      scoreName: 'post_form[star]',
-      half: true,
-    });
-  </script>-->
-
-  <div class="field">
-    <%= fs.label :"オススメポイント" %> <%= fs.text_field :good_point %>
-  </div>
-
+  <%= f.fields_for :post_reviews do |fs| %>
+  <tbody>
+    <tr>
+      <td><%= f.file_field :image, accept: "image/*", class: "form_control" %></td>
+      <td><%= fs.text_field :item_name, class: "form_control" %></td>
+      <td><%= fs.select :item_genre, PostReview.item_genres.keys, {prompt: '選択してください'} , class: "form_control" %></td>
+      <td><%= fs.text_field :item_brand, class: "form_control" %></td>
+      <td><%= fs.text_field :star, id: :review_star, class: "form_control" %></td>
+      <td><%= fs.text_field :good_point, class: "form_control" %></td>
+    </tr>
+  </tbody>
   <% end %>
+</table>
 
   <div class="actions">
 　  <%= f.submit "投稿", name: nil, class: "btn btn-dark" %>
 　</div>
 <% end %>
+
+
