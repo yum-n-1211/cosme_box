@@ -1,2 +1,36 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<h2>Everyone's Reccomend -みんなのベスコス投稿-</h2>
+
+<% @post.each do |post| %>
+
+<table class="table-sm table-borderless">
+  <tr>
+    <th>
+      <%= post.user.nickname %>
+      投稿日：<%= post.created_at.strftime('%Y/%m/%d') %>
+    </th>
+    <th><%= image_tag post.post_review.get_image, size: "100x100" %></th>
+    <th class="strong"><%= post.post_review.item_name %></th>
+    <th><%= post.post_review.item_genre %> | <%= post.post_review.item_brand %></th>
+    <th id="review_star-<%= post.post_review.id %>"><%= post.post_review.star %>点</th>
+
+      <script>
+      $('#review_star-<%= post_review.id %>').raty({
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        score: <%= post_review.star %>,
+        half: true,
+      });
+      </script>
+
+    <th><%= post.post_review.good_point %></th>
+  </tr>
+</table>
+
+<% end %>
+
+
+
+
+<%= paginate @posts %>

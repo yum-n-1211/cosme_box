@@ -16,10 +16,12 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
+    @post_reviews = @post.post_reviews
   end
 
   def index
-    @post = Post.all
+    @post = Post.find_by(user_id: current_user.id)
     @post_review = PostReview.all
   end
 

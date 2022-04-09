@@ -1,2 +1,35 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h2>Favorite COSME</h2>
+
+<%= @post.user.nickname %>
+投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %>
+
+<% @post_reviews.each do |post_review| %>
+
+<table class="table-sm table-borderless">
+  <tr>
+    <th><%= image_tag post_review.get_image, size: "50x50" %></th>
+    <th class="strong"><%= post_review.item_name %></th>
+    <th><%= post_review.item_genre %> | <%= post_review.item_brand %></th>
+    <th id="review_star-<%= post_review.id %>"><%= post_review.star %>点</th>
+
+      <script>
+      $('#review_star-<%= post_review.id %>').raty({
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        score: <%= post_review.star %>,
+        half: true,
+      });
+      </script>
+    
+    <th><%= post_review.good_point %></th>
+  </tr>
+</table>
+
+<% end %>
+
+<%= link_to "https://twitter.com/share?url=#{request.url}&text=リンク", class: 'icon-twitter', data: { show_count: false }, target: '_blank' do %>
+  <i class="fab fa-twitter-square"></i>
+<% end %>
+<p>Twitterにシェア</p>
