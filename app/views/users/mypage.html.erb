@@ -33,3 +33,14 @@
 </table>
 
 <h4>♡ Favorite ♡</h4>
+
+<% if @like_list.present? %>
+  <% @like_list.each do |post| %>
+  <div class="border">
+    <% post.post_reviews.each do |post_review| %>
+      <%= image_tag post_review.get_image, size: "50x50" %>
+      <%= post_review.item_name %>
+    <% end %>
+  </div>
+  <% end %>
+<% end %>

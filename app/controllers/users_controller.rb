@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   def mypage
     @user = current_user
+    likes = Like.where(user_id: current_user.id).pluck(:post_id)
+    @like_list = Post.find(likes)
   end
 
   def show

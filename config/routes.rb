@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
   get '/about' => 'homes#about', as: 'about'
-  get 'users/mypage' => 'users#mypage', as: 'mypage'
+  get 'users/mypage' => 'users#mypage', as: 'mypage' do 
+    get :bookmarks, on: :collection 
+  end
   get 'users/:id' => 'users#show', as: 'user_path'
   get 'users/information/edit' => 'users#edit', as: 'user_edit_information'
   patch 'users/information' => 'users#update', as: 'user_update_information'
