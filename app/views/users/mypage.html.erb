@@ -1,0 +1,35 @@
+<h2>マイページ</h2>
+
+<h4>Profile</h4>
+
+<div>
+  <!-- %= image_tag @user.get_profile_image(100,100) % -->
+</div>
+
+<p><%= link_to "ユーザー情報編集", user_edit_information_path %></p>
+<p><%= link_to "退会", confirm_unsubscribe_path %></p>
+
+<table class="table-borderless">
+  <tr>
+    <th>name</th>
+    <th><%= @user.nickname %></th>
+  </tr>
+  <tr>
+    <th></th>
+    <th><%= @user.sex %> <%= @user.birthday %></th>
+  </tr>
+  <tr>
+    <th>personal color</th>
+    <th><%= @user.personal_color %></th>
+  </tr>
+  <tr>
+    <th>skin type</th>
+    <th><%= @user.skin_quality %></th>
+  </tr>
+  <tr>
+    <th>ひとこと</th>
+    <th><%= @user.introduction %></th>
+  </tr>
+</table>
+
+<h4>♡ Favorite ♡</h4>

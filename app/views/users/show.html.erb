@@ -1,35 +1,37 @@
-<h2>マイページ</h2>
+<h2><%= @user.nickname %> Reccomend item-<%= @user.nickname %>のベスコス履歴-</h2>
 
-<h4>Profile</h4>
 
-<div>
-  <!-- %= image_tag @user.get_profile_image(100,100) % -->
-</div>
+<% @posts.each do |post| %>
+<% post.post_reviews.each do |post_review| %>
 
-<p><%= link_to "ユーザー情報編集", user_edit_information_path %></p>
-<p><%= link_to "退会", confirm_unsubscribe_path %></p>
+<table class="table table-borderless">
+  <tr>
+    <td>
+      <%= post.created_at.strftime('%Y/%m/%d') %>
+    </td>
+    <th><%= image_tag post_review.get_image, size: "100x100" %></th>
+    <th>
+      <p><%= post_review.item_name %></p>
+      <%= post_review.item_genre %> | <%= post_review.item_brand %>
+    </th>
+    <td>
+      <span  id="review_star-<%= post_review.id %>"></span>
+      <p><%= post_review.star %>点</p>
+    </td>
+      <script>
+      $('#review_star-<%= post_review.id %>').raty({
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        score: <%= post_review.star %>,
+        half: true,
+      });
+      </script>
 
-<table class="table-borderless">
-  <tr>
-    <th>name</th>
-    <th><%= @user.nickname %></th>
-  </tr>
-  <tr>
-    <th></th>
-    <th><%= @user.sex %> <%= @user.birthday %></th>
-  </tr>
-  <tr>
-    <th>personal color</th>
-    <th><%= @user.personal_color %></th>
-  </tr>
-  <tr>
-    <th>skin type</th>
-    <th><%= @user.skin_quality %></th>
-  </tr>
-  <tr>
-    <th>ひとこと</th>
-    <th><%= @user.introduction %></th>
+    <td><%= post_review.good_point %></td>
   </tr>
 </table>
 
-<h4>♡ Favorite ♡</h4>
+<% end %>
+<% end %>
