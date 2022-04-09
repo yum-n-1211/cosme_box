@@ -3,8 +3,8 @@
 <%= @post.user.nickname %>
 投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %>
 
-<% @post_reviews.each do |post_review| %>
 
+<% @post_reviews.each do |post_review| %>
 <table class="table-sm table-borderless">
   <tr>
     <th><%= image_tag post_review.get_image, size: "50x50" %></th>
@@ -22,12 +22,17 @@
         half: true,
       });
       </script>
-    
+
     <th><%= post_review.good_point %></th>
   </tr>
 </table>
-
 <% end %>
+
+<!--いいね機能で部分的に更新したい場所-->
+<div class="likes_buttons_<%= @post.id %>">
+  <%= render 'likes/like', post: @post %>
+</div>
+
 
 <%= link_to "https://twitter.com/share?url=#{request.url}&text=リンク", class: 'icon-twitter', data: { show_count: false }, target: '_blank' do %>
   <i class="fab fa-twitter-square"></i>
