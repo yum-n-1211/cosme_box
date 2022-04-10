@@ -20,6 +20,10 @@ class User < ApplicationRecord
   profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  def age(today = Date.today)
+    ((today.to_time - birthday.to_time) / 1.year.seconds).floor
+  end
+
   scope :search, -> (search_params) do      #scopeでsearchメソッドを定義。(search_params)は引数
     return if search_params.blank? #検索フォームに値がなければ以下の手順は行わない
 
