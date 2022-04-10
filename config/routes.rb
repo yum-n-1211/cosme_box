@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
   get '/about' => 'homes#about', as: 'about'
-  get 'users/mypage' => 'users#mypage', as: 'mypage' do 
-    get :bookmarks, on: :collection 
+  get 'users/mypage' => 'users#mypage', as: 'mypage' do
+    get :likes, on: :collection
   end
   get 'users/:id' => 'users#show', as: 'user_path'
   get 'users/information/edit' => 'users#edit', as: 'user_edit_information'
@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   resources :posts, only: [:new, :create, :show ,:edit, :update,] do
     resource :likes, only: [:create, :destroy]
   end
+  get "search" => "searches#search"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

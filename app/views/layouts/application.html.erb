@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <script src="https://kit.fontawesome.com/d0ba5b4acd.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -14,6 +14,28 @@
 
   <body>
     <header>
+
+    <% if user_signed_in? %>
+      <div class="search_form">
+        <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |fs| %>
+          <%= fs.hidden_field :range, :value => "User" %>
+          <%= fs.label :"パーソナルカラー" %>
+          <%= fs.select :personal_color, options_for_select(User.personal_colors, {}), include_blank: true %>
+          <%= fs.label :"肌タイプ" %>
+          <%= fs.select :skin_quality, options_for_select(User.skin_qualities, {}), include_blank: true %>
+          <%= fs.text_field :keyword1 %>
+          <%= fs.submit "ユーザー検索", class: "btn btn-primary" %>
+        <% end %>
+        <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
+          <%= f.hidden_field :range, :value => "PostReview" %>
+          <%= f.label :"カテゴリ" %>
+          <%= f.select :item_genre, options_for_select(PostReview.item_genres, {}), include_blank: true %>
+          <%= f.text_field :keyword2 %>
+          <%= f.submit "アイテム検索", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <% end %>
+
     <% if user_signed_in? %>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

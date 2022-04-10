@@ -1,0 +1,39 @@
+<h2>Results -検索結果-</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがUserの時 -->
+  <% if @range == "PostReview" %>
+  <tbody>
+      <% @post_reviews.each do |post_review| %>
+      <tr>
+        <th><%= image_tag post_review.get_image, size: "50x50" %></th>
+        <th class="strong"><%= post_review.item_name %></th>
+        <th><%= post_review.item_genre %> | <%= post_review.item_brand %></th>
+        <th id="review_star-<%= post_review.id %>"><%= post_review.star %>点</th>
+
+          <script>
+          $('#review_star-<%= post_review.id %>').raty({
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            score: <%= post_review.star %>,
+            half: true,
+          });
+          </script>
+
+        <th><%= post_review.good_point %></th>
+      </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがPostReviewの時) -->
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.nickname %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>
