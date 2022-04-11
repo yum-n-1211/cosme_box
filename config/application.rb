@@ -19,5 +19,7 @@ module CosmeBox
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.autoload_paths += Dir.glob("#{config.root}/app/forms")
+    config.i18n.default_locale = :ja
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/*.yml').to_s]
   end
 end

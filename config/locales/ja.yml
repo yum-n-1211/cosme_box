@@ -1,0 +1,18 @@
+ja:
+  enums:
+    user:
+      personal_color:
+        spring: "イエベ春"
+        summer: "ブルベ夏"
+        autumn: "イエベ秋"
+        winter: "ブルベ冬"
+        unknown: "わからない"
+      skin_quality:
+        normal: "普通肌"
+        dry: "乾燥肌"
+        oily: "脂性肌"
+        mixed: "混合肌"
+        notclear: "わからない"
+    post_review:
+      item_genre:
+        

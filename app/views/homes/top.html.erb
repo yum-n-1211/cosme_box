@@ -11,7 +11,7 @@
     <th><%= image_tag post_review.get_image, size: "100x100" %></th>
     <th>
       <p><%= post_review.item_name %></p>
-      <%= post_review.item_genre %> | <%= post_review.item_brand %>
+      <%= post_review.item_genre_i18n %> | <%= post_review.item_brand %>
     </th>
     <td>
       <span  id="review_star-<%= post_review.id %>"></span>

@@ -9,7 +9,7 @@
   <tr>
     <th><%= image_tag post_review.get_image, size: "50x50" %></th>
     <th class="strong"><%= post_review.item_name %></th>
-    <th><%= post_review.item_genre %> | <%= post_review.item_brand %></th>
+    <th><%= post_review.item_genre_i18n %> | <%= post_review.item_brand %></th>
     <th id="review_star-<%= post_review.id %>"><%= post_review.star %>点</th>
 
       <script>

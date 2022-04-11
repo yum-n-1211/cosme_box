@@ -9,8 +9,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   enum sex: { woman: 0, man: 1 }
-  enum personal_color: { spring: 0, summer: 1, autumn: 2, winter: 3 }
-  enum skin_quality: { normal: 0, dry: 1, oily: 2, mixed: 3 }
+  enum personal_color: { spring: 0, summer: 1, autumn: 2, winter: 3, unknown: 4 }
+  enum skin_quality: { normal: 0, dry: 1, oily: 2, mixed: 3, notclear: 4 }
 
   def get_profile_image(width, height)
   unless profile_image.attached?
