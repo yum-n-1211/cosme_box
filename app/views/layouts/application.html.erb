@@ -20,9 +20,9 @@
         <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |fs| %>
           <%= fs.hidden_field :range, :value => "User" %>
           <%= fs.label :"パーソナルカラー" %>
-          <%= fs.select :personal_color, options_for_select(User.personal_colors, {}), include_blank: true %>
+          <%= fs.select :personal_color, User.personal_colors_i18n.invert.to_a, include_blank: true %>
           <%= fs.label :"肌タイプ" %>
-          <%= fs.select :skin_quality, options_for_select(User.skin_qualities, {}), include_blank: true %>
+          <%= fs.select :skin_quality, User.skin_qualities_i18n.invert.to_a, include_blank: true %>
           <i class="fas fa-search"></i>
           <%= fs.text_field :keyword1 %>
           <%= fs.submit "ユーザー検索", class: "btn btn-primary" %>
@@ -30,7 +30,7 @@
         <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
           <%= f.hidden_field :range, :value => "PostReview" %>
           <%= f.label :"カテゴリ" %>
-          <%= f.select :item_genre, options_for_select(PostReview.item_genres, {}), include_blank: true %>
+          <%= f.select :item_genre, PostReview.item_genres.invert.to_a, include_blank: true %>
           <i class="fas fa-search"></i><%= f.text_field :keyword2 %>
           <%= f.submit "アイテム検索", class: "btn btn-primary" %>
         <% end %>
