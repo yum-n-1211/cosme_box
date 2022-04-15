@@ -2,7 +2,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         # Twitter API認証用に追加
+         :omniauthable, omniauth_providers: [:twitter]
 
   has_one_attached :profile_image
   has_many :posts, dependent: :destroy
@@ -11,6 +13,21 @@ class User < ApplicationRecord
   enum sex: { woman: 0, man: 1 }
   enum personal_color: { spring: 0, summer: 1, autumn: 2, winter: 3, unknown: 4 }
   enum skin_quality: { normal: 0, dry: 1, oily: 2, mixed: 3, notclear: 4 }
+
+  def self.find_omniauth(auth)
+    User.where(provider: auth.provider, uid: auth.uid).first
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.twitter_data"]
+        user.uid = data["uid"],
+        user.provider = data["provider"],
+        user.email = "#{Time.now.strftime('%Y%m%d%H%M%S').to_i}-#{user.uid}-#{user.provider}@example.com",
+        user.password = Devise.friendly_token[0,20]
+      end
+    end
+  end
 
   def get_profile_image(width, height)
   unless profile_image.attached?
