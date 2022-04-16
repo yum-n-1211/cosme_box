@@ -1,31 +1,43 @@
+<div class="bg-secondary">
 <%= form_with model: @contact, url: contacts_confirm_path do |f| %>
 
-<h1>お問合わせ</h1>
+<div class="container">
+  <div class="main container-fluid">
+    <div class="row bg-light text-dark py-5">
+      <div class="col-md-8 offset-md-2">
+        <h2 class="fs-1 mb-5 text-center fw-bold">お問い合わせ</h2>
 
-<% if @contact.errors.any? %>
-  <div class="alert alert-danger">
-    <strong>入力内容にエラーがあります</strong>
-    <ul>
-      <% @contact.errors.each do |attr, msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+  <% if @contact.errors.any? %>
+    <div class="alert alert-danger">
+      <strong>入力内容にエラーがあります</strong>
+      <ul>
+        <% @contact.errors.each do |attr, msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<table class="table">
+  <table class="table">
     <tr>
-      <th>名前<span class="text-danger">（必須）</span></th>
-      <td><%= f.text_field :name %></td>
+      <th class="col-lg-3">名前<span class="text-danger">（必須）</span></th>
+      <td class="col-lg-5"><%= f.text_field :name, class:"form-control" %></td>
     </tr>
     <tr>
       <th>メールアドレス<span class="text-danger">（必須）</span></th>
-      <td><%= f.text_field :email %></td>
+      <td><%= f.text_field :email, class:"form-control" %></td>
     </tr>
     <tr>
       <th>お問い合わせ内容</th>
-      <td><%= f.text_area :message %></td>
+      <td><%= f.text_area :message, rows: 8, class:"form-control" %></td>
     </tr>
   </table>
-  <%= f.submit '確認', class: 'btn btn-primary' %>
+  
+  <div class="text-center"><%= f.submit '確 認', class: 'btn-lg btn-primary' %></div>
+  
 <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
