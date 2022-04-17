@@ -19,46 +19,54 @@
       <div class="container">
         <a class="navbar-brand" href="/"><%= image_tag('logo.png', size: '150x150') %></a>
 
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
+        <div>
+          <ul class="navbar-nav">
+          <% if user_signed_in? %>
+            <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %></li>
+            <li class="nav-item"><%= link_to "マイページ", mypage_path(current_user.id), class: 'nav-link text-dark' %></li>
+            <li class="nav-item"><%= link_to "フォーム", new_post_path, class: 'nav-link text-dark' %></li>
+            <li class="nav-item"><%= link_to "問い合わせ", contacts_path, class: 'nav-link text-dark' %></li>
+          <% else %>
+            <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %></li>
+            <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %></li>
+            <li class="nav-item"><%= link_to "About", about_path, class: 'nav-link text-dark' %></li>
+          <% end %>
+          </ul>
+        </div>
 
+        <div class="navbar-nav">
         <% if user_signed_in? %>
-          <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %></li>
-          <li class="nav-item"><%= link_to "マイページ", destroy_user_session_path, class: 'nav-link text-dark' %></li>
-          <li class="nav-item"><%= link_to "フォーム", new_post_path, class: 'nav-link text-dark' %></li>
-          <li class="nav-item"><%= link_to "問い合わせ", contacts_path, class: 'nav-link text-dark' %></li>
-        <% else %>
-          <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %></li>
-          <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %></li>
-          <li class="nav-item"><%= link_to "About", about_path, class: 'nav-link text-dark' %></li>
+          <div class="search_form border p-1 col-log-8">
+            <div class="user-search mb-3">
+            <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |fs| %>
+              <%= fs.hidden_field :range, :value => "User" %>
+              <%= fs.label :"パーソナルカラー", class:"small" %>
+              <%= fs.select :personal_color, User.personal_colors_i18n.invert.to_a, include_blank: true, class:"small" %>
+              <%= fs.label :" 肌タイプ", class:"small" %>
+              <%= fs.select :skin_quality, User.skin_qualities_i18n.invert.to_a, include_blank: true, class:"small" %><br>
+              <div class="text-right">
+              <i class="fas fa-search"></i>
+              <%= fs.text_field :keyword1, :placeholder =>"キーワードで検索", class:"small" %>
+              <%= fs.submit "ユーザー検索", class:"btn-sm btn-secondary " %>
+              </div>
+            <% end %>
+            </div>
+            <div class="item-search">
+              <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
+                <%= f.hidden_field :range, :value => "PostReview" %>
+                <%= f.label :"カテゴリ", class:"small" %>
+                <%= f.select :item_genre, PostReview.item_genres.invert.to_a, include_blank: true %>
+                <i class="fas fa-search"> </i><%= f.text_field :keyword2, :placeholder =>"キーワードで検索", class:"small" %><br>
+                <div class="text-right"><%= f.submit "アイテム検索", class:"btn-sm btn-secondary text-right" %></div>
+              <% end %>
+            </div>
+          </div>
         <% end %>
+        </div>
 
-        </ul>
-      </div>
       </div>
     </nav>
     </header>
-        <% if user_signed_in? %>
-      <div class="search_form">
-        <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |fs| %>
-          <%= fs.hidden_field :range, :value => "User" %>
-          <%= fs.label :"パーソナルカラー" %>
-          <%= fs.select :personal_color, User.personal_colors_i18n.invert.to_a, include_blank: true %>
-          <%= fs.label :"肌タイプ" %>
-          <%= fs.select :skin_quality, User.skin_qualities_i18n.invert.to_a, include_blank: true %>
-          <i class="fas fa-search"></i>
-          <%= fs.text_field :keyword1 %>
-          <%= fs.submit "ユーザー検索", class: "btn-sm btn-secondary" %>
-        <% end %>
-        <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
-          <%= f.hidden_field :range, :value => "PostReview" %>
-          <%= f.label :"カテゴリ" %>
-          <%= f.select :item_genre, PostReview.item_genres.invert.to_a, include_blank: true %>
-          <i class="fas fa-search"></i><%= f.text_field :keyword2 %>
-          <%= f.submit "アイテム検索", class: "btn-sm btn-secondary" %>
-        <% end %>
-      </div>
-    <% end %>
 
   <main>
     <%= yield %>

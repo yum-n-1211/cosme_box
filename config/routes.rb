@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get '/about' => 'homes#about', as: 'about'
-  get 'users/mypage' => 'users#mypage', as: 'mypage' do
+  get 'users/mypage/:id' => 'users#mypage', as: 'mypage' do
     get :likes, on: :collection
   end
   get 'users/:id' => 'users#show', as: 'user_path'
