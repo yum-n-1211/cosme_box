@@ -1,45 +1,44 @@
-<h4>ユーザー情報編集</h4>
+<div class="container">
+  <h3 class="mb-3 mt-3 fw-normal text-center">Edit User -ユーザー情報編集-</h1>
+
+<div class="row justify-content-center">
 
 <%= form_with model: @user, url: user_update_information_path do |f| %>
 
-  <%= f.file_field :profile_image, placeholder: "profile画像", accept: "image/*" %>
+<table class="table-sm table-borderless">
+  <tr>
+    <td></td>
+    <th><%= f.file_field :profile_image, placeholder: "profile画像", accept: "image/*" %></th>
+  </tr>
+  <tr>
+    <td class="col-lg-4"><%= f.label :"ユーザー名" %></td>
+    <th class="field col-lg-6"><%= f.text_field :nickname %></th>
+  </tr>
+  <tr>
+    <td><%= f.label :"生年月日" %></td>
+    <th class="field"><%= f.text_field :birthday %></th>
+  </tr>
+  <tr>
+    <td><%= f.label :"性別" %></td>
+    <th class="field"><%= f.select :sex, User.sexes.keys, {prompt: '選択してください'} %></th>
+  </tr>
+  <tr>
+    <td><%= f.label :"パーソナルカラー" %></td>
+    <th class="field"><%= f.select :personal_color, User.personal_colors.keys, {prompt: '選択してください'} %></th>
+  </tr>
+  <tr>
+    <td><%= f.label :"肌タイプ" %></td>
+    <th class="field"><%= f.select :skin_quality, User.skin_qualities.keys, {prompt: '選択してください'} %></th>
+  </tr>
+  <tr>
+    <td><%= f.label :"ひとこと" %></td>
+    <th class="field"><%= f.text_field :introduction %></th>
+  </tr>
+  <tr>
+    <td><%= f.label :"メールアドレス" %></td>
+    <th class="field"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></th>
+  </tr>
+</table>
 
-  <div class="field">
-    <%= f.label :"ニックネーム" %><br />
-    <%= f.text_field :nickname %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"生年月日" %><br />
-    <%= f.text_field :birthday %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"性別" %><br />
-    <%= f.select :sex, User.sexes.keys %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"パーソナルカラー" %><br />
-    <%= f.select :personal_color, User.personal_colors.keys %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"肌タイプ" %><br />
-    <%= f.select :skin_quality, User.skin_qualities.keys %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"ひとこと" %><br />
-    <%= f.text_field :introduction %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "編集する" %>
-  </div>
+  <div class="actions text-center mt-3 mb-3"><%= f.submit "ユーザー編集", class:"btn-sm btn-info" %></div>
 <% end %>
