@@ -1,35 +1,46 @@
-<table class="table-sm">
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>name -商品名-</th>
-      <th>genre -カテゴリ--</th>
-      <th>brand -ブランド</th>
-      <th>star -評価-<br>0.5刻み/満点5点</th>
-      <th>review -コメント-</th>
-    </tr>
-  </thead>
+<div class="container">
+  <h3 class="mb-2 mt-3 fw-normal text-center">New Post -新規投稿-</h3>
+  <p class="text-center text-dark mb-3">今のベストコスメ５品をみんなにシェアしましょう♩</p>
 
+  <div class="row">
+    <%= form_with model: @post, url: posts_path, local:true do |f| %>
+    <%= f.fields_for :post_reviews do |fs| %>
+    <div class="d-lg-inline-flex border mr-2 mb-3">
+    <table class="table-sm">
+      <tbody>
+        <tr>
+          <td>image -画像-</td>
+          <td><%= f.label :image, "image", class:"btn btn-secondary" %><%= f.file_field :image, accept: "image/*", class:"d-none" %></td>
+        </tr>
+        <tr>
+          <td>name -商品名-</td>
+          <td><%= fs.text_field :item_name, class:"form_control" %></td>
+        </tr>
+        <tr>
+          <td>genre -カテゴリ-</td>
+          <td><%= fs.select :item_genre, PostReview.item_genres_i18n.invert, {prompt: '選択してください'} , class:"form_control" %></td>
+        </tr>
+        <tr>
+          <td>brand -ブランド-</td>
+          <td><%= fs.text_field :item_brand, class:"form_control" %></td>
+        </tr>
+        <tr>
+          <td>
+            star -評価-<br><p class="small">0.5刻み/満点5点</p>
+            <td><%= fs.select :star, [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5], class: "form_control" %></td>
+          </td>
+        </tr>
+        <tr>
+          <td>review -コメント-</td>
+          <td><%= fs.text_field :good_point, class:"form_control" %></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <% end %>
 
-<%= form_with model: @post, url: posts_path, local:true do |f| %>
-
-  <%= f.fields_for :post_reviews do |fs| %>
-  <tbody>
-    <tr>
-      <td><%= f.file_field :image, accept: "image/*", class: "form_control" %></td>
-      <td><%= fs.text_field :item_name, class: "form_control" %></td>
-      <td><%= fs.select :item_genre, PostReview.item_genres.keys, {prompt: '選択してください'} , class: "form_control" %></td>
-      <td><%= fs.text_field :item_brand, class: "form_control" %></td>
-      <td><%= fs.text_field :star, id: :review_star, class: "form_control" %></td>
-      <td><%= fs.text_field :good_point, class: "form_control" %></td>
-    </tr>
-  </tbody>
+    <div class="actions text-center mt-3 mb-3"><%= f.submit " 投 稿 ", name: nil, class: "btn-lg btn-info" %></div>
   <% end %>
-</table>
 
-  <div class="actions">
-　  <%= f.submit "投稿", name: nil, class: "btn btn-dark" %>
-　</div>
-<% end %>
-
-
+</div>
+</div>

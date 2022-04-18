@@ -15,4 +15,17 @@ ja:
         notclear: "わからない"
     post_review:
       item_genre:
-        
+        skincare: "スキンケア"
+        base1: "下地"
+        base2: "ファンデーション"
+        base3: "フェイスパウダー"
+        mascara: "マスカラ"
+        eyeshadow: "アイシャドウ"
+        eyeliner: "アイライナー"
+        cheek: "チーク"
+        lip: "リップ"
+        body: "ボディケア"
+        uv: "UVケア"
+        nail: "ネイル"
+        perfume: "香水"
+        hair: "ヘアケア"

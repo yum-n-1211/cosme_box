@@ -4,14 +4,15 @@ class PostReview < ApplicationRecord
   has_one_attached :image
 
   enum item_genre: {
-    woman: 0, man: 1
+    skincare: 0, base1: 1, base2: 2, base3: 3, mascara: 4, eyeshadow: 5, eyeliner: 6, cheek: 7, lip: 8, body: 9, uv: 10, nail: 11, perfume: 12,
+    hair: 13
   }
 
   def get_image
     if image.attached?
       image
     else
-      'star-off.png'
+      '22399387.jpeg'
     end
   end
 

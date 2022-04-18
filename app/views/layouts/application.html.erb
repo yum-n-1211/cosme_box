@@ -37,7 +37,7 @@
         <div class="navbar-nav">
         <% if user_signed_in? %>
           <div class="search_form border p-1 col-log-8">
-            <div class="user-search mb-3">
+            <div class="user-search mb-1">
             <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |fs| %>
               <%= fs.hidden_field :range, :value => "User" %>
               <%= fs.label :"パーソナルカラー", class:"small" %>
@@ -55,7 +55,7 @@
               <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
                 <%= f.hidden_field :range, :value => "PostReview" %>
                 <%= f.label :"カテゴリ", class:"small" %>
-                <%= f.select :item_genre, PostReview.item_genres.invert.to_a, include_blank: true %>
+                <%= f.select :item_genre, PostReview.item_genres_i18n.invert.to_a, include_blank: true, class:"small" %>
                 <i class="fas fa-search"> </i><%= f.text_field :keyword2, :placeholder =>"キーワードで検索", class:"small" %><br>
                 <div class="text-right"><%= f.submit "アイテム検索", class:"btn-sm btn-secondary text-right" %></div>
               <% end %>

@@ -1,8 +1,9 @@
-<section class="inner">
+<section class="text-center mt-5 mb-5">
 	<h2 class="section-ttl">本当に退会しますか？</h2>
-	<h3 class="text-center">退会するとこれまでの履歴が閲覧できなくなります。<br>退会する場合は、「退会する」をクリックしてください。</h3>
+	<h4 class="text-center">退会するとこれまでの履歴が閲覧できなくなります。<br>退会する場合は、「退会する」をクリックしてください。</h4>
+	<br>
 	<div class="flex justify-around mt2">
-		<%= link_to "マイページに戻る", mypage_path, class: "btn btn-primary" %>
-		<%= link_to "退会する", withdraw_user_path, method: :patch, "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: "btn btn-danger" %>
+		<%= link_to "マイページに戻る", mypage_path(current_user.id), class: "btn-lg btn-primary" %>
+		<%= link_to "退会する", withdraw_user_path, method: :patch, "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: "btn-lg btn-danger" %>
 	</div>
 </section>

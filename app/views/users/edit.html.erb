@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 class="mb-3 mt-3 fw-normal text-center">Edit User -ユーザー情報編集-</h1>
+  <h3 class="mb-3 mt-3 fw-normal text-center">Edit User -ユーザー情報編集-</h3>
 
 <div class="row justify-content-center">
 
@@ -24,11 +24,11 @@
   </tr>
   <tr>
     <td><%= f.label :"パーソナルカラー" %></td>
-    <th class="field"><%= f.select :personal_color, User.personal_colors.keys, {prompt: '選択してください'} %></th>
+    <th class="field"><%= f.select :personal_color, User.personal_colors.keys_i18n.invert.to_a, {prompt: '選択してください'} %></th>
   </tr>
   <tr>
     <td><%= f.label :"肌タイプ" %></td>
-    <th class="field"><%= f.select :skin_quality, User.skin_qualities.keys, {prompt: '選択してください'} %></th>
+    <th class="field"><%= f.select :skin_quality, User.skin_qualities.keys_i18n.invert.to_a, {prompt: '選択してください'} %></th>
   </tr>
   <tr>
     <td><%= f.label :"ひとこと" %></td>

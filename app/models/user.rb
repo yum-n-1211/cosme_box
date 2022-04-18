@@ -34,7 +34,7 @@ class User < ApplicationRecord
     file_path = Rails.root.join('app/assets/images/22623694.jpg')
     profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
   end
-  profile_image.variant(resize_to_limit: [width, height]).processed
+    profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
   def age(today = Date.today)

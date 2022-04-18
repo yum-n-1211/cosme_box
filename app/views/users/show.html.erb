@@ -1,17 +1,46 @@
-<h2><%= @user.nickname %> Reccomend item-<%= @user.nickname %>のベスコス履歴-</h2>
+<div class="container">
+  <div class="row mb-5 mt-5">
+    <div class="col-lg-5">
+      <h5 class="text-dark" style="padding: 1rem 2rem; border: 2px dotted #000;">* Profile *</h4>
+      <div><%= image_tag @user.get_profile_image(150,150) %></div>
+
+      <table class="table-borderless mb-3">
+        <tr>
+          <th class="col-lg-2">ユーザー名</th>
+          <th class="col-lg-3"><%= @user.nickname %></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th><%= @user.sex %> / <%= @user.age %>歳</th>
+        </tr>
+        <tr>
+          <th>パーソナルカラー</th>
+          <th><%= @user.personal_color_i18n %></th>
+        </tr>
+        <tr>
+          <th>肌タイプ</th>
+          <th><%= @user.skin_quality_i18n %></th>
+        </tr>
+        <tr>
+          <th>ひとこと</th>
+          <th><%= @user.introduction %></th>
+        </tr>
+      </table>
+    </div>
+
+<div class="col-lg-7">
+<h5 class="text-dark" style="padding: 1rem 2rem; border: 2px dotted #000;"><%= @user.nickname %>'s Reccomend item  -<%= @user.nickname %>の投稿履歴-</h2>
 
 <% @posts.each do |post| %>
 <% post.post_reviews.each do |post_review| %>
 
 <table class="table table-borderless">
   <tr>
-    <td>
-      <%= post.created_at.strftime('%Y/%m/%d') %>
-    </td>
     <th><%= image_tag post_review.get_image, size: "100x100" %></th>
     <th>
       <p><%= post_review.item_name %></p>
-      <%= post_review.item_genre_i18n %> | <%= post_review.item_brand %>
+      <p><%= post_review.item_genre_i18n %> | <%= post_review.item_brand %></p>
+      <%= post.created_at.strftime('%Y/%m/%d') %>
     </th>
     <td>
       <span  id="review_star-<%= post_review.id %>"></span>
@@ -19,7 +48,7 @@
     </td>
       <script>
       $('#review_star-<%= post_review.id %>').raty({
-        size     : 36,
+        size     : 15,
         starOff:  '<%= asset_path('star-off.png') %>',
         starOn : '<%= asset_path('star-on.png') %>',
         starHalf: '<%= asset_path('star-half.png') %>',
@@ -34,3 +63,5 @@
 
 <% end %>
 <% end %>
+</div>
+</div>

@@ -1,46 +1,49 @@
-<h2>マイページ</h2>
+<div class="container">
+  <h3 class="mb-3 mt-5 fw-normal text-center">MyPage -マイページ-</h1>
+  <div class="row mb-5">
 
-<h4>Profile</h4>
+    <div class="col-lg-6">
+      <h4 class="text-dark" style="padding: 1rem 2rem; border: 2px dotted #000;">* Profile *</h4>
+      <div><%= image_tag @user.get_profile_image(150,150) %></div>
 
-<div>
-  <!-- %= image_tag @user.get_profile_image(100,100) % -->
-</div>
+      <table class="table-borderless mb-3">
+        <tr>
+          <th class="col-lg-2">ユーザー名</th>
+          <th class="col-lg-4"><%= @user.nickname %></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th><%= @user.sex %> / <%= @user.age %>歳</th>
+        </tr>
+        <tr>
+          <th>パーソナルカラー</th>
+          <th><%= @user.personal_color_i18n %></th>
+        </tr>
+        <tr>
+          <th>肌タイプ</th>
+          <th><%= @user.skin_quality_i18n %></th>
+        </tr>
+        <tr>
+          <th>ひとこと</th>
+          <th><%= @user.introduction %></th>
+        </tr>
+      </table>
+      <p><%= link_to "ユーザー情報編集", user_edit_information_path, class:"btn-sm btn-info" %></p>
+      <p><%= link_to "退会", confirm_unsubscribe_path, class:"btn-sm btn-dark" %></p>
+    </div>
 
-<p><%= link_to "ユーザー情報編集", user_edit_information_path %></p>
-<p><%= link_to "退会", confirm_unsubscribe_path %></p>
+  <div class="col-lg-6">
+    <h4 class="text-dark" style="padding: 1rem 2rem; border: 2px dotted #000;">♡ Favorite ♡</h4>
 
-<table class="table-borderless">
-  <tr>
-    <th>name</th>
-    <th><%= @user.nickname %></th>
-  </tr>
-  <tr>
-    <th></th>
-    <th><%= @user.sex %> <%= @user.age %></th>
-  </tr>
-  <tr>
-    <th>personal color</th>
-    <th><%= @user.personal_color_i18n %></th>
-  </tr>
-  <tr>
-    <th>skin type</th>
-    <th><%= @user.skin_quality_i18n %></th>
-  </tr>
-  <tr>
-    <th>ひとこと</th>
-    <th><%= @user.introduction %></th>
-  </tr>
-</table>
-
-<h4>♡ Favorite ♡</h4>
-
-<% if @like_list.present? %>
-  <% @like_list.each do |post| %>
-  <div class="border">
-    <% post.post_reviews.each do |post_review| %>
-      <%= image_tag post_review.get_image, size: "50x50" %>
-      <%= post_review.item_name %>
+    <% if @like_list.present? %>
+      <% @like_list.each do |post| %>
+      <div class="border">
+        <% post.post_reviews.each do |post_review| %>
+          <%= image_tag post_review.get_image, size: "50x50" %>
+          <%= post_review.item_name %>
+        <% end %>
+      </div>
+      <% end %>
     <% end %>
   </div>
-  <% end %>
-<% end %>
+</div>

@@ -1,16 +1,19 @@
-<h2>Results -検索結果-</h2>
+<div class="container">
+<h3 class="mb-4 mt-4 fw-normal text-center">Results -検索結果-</h3>
 
 <table class="table table-hover table-inverse">
   <!--検索対象モデルがUserの時 -->
+  <div class="row">
   <% if @range == "PostReview" %>
   <tbody>
       <% @post_reviews.each do |post_review| %>
       <tr>
-        <th><%= image_tag post_review.get_image, size: "50x50" %></th>
-        <th class="strong"><%= post_review.item_name %></th>
-        <th><%= post_review.item_genre %> | <%= post_review.item_brand %></th>
-        <th id="review_star-<%= post_review.id %>"><%= post_review.star %>点</th>
-
+        <td class="col-lg-2"><%= image_tag post_review.get_image, size: "100x100" %></td>
+        <td class="col-lg-3 font-weight-bold">
+          <%= post_review.item_name %><br>
+          <p class="font-weight-normal"><%= post_review.item_genre_i18n %> / <%= post_review.item_brand %></p>
+        </td>
+        <td class="col-lg-2" id="review_star-<%= post_review.id %>">
           <script>
           $('#review_star-<%= post_review.id %>').raty({
             size     : 36,
@@ -21,19 +24,28 @@
             half: true,
           });
           </script>
-
-        <th><%= post_review.good_point %></th>
+          <p class="small"><%= post_review.star %>点</p>
+        </td>
+        <td class="col-lg-5"><%= post_review.good_point %></td>
       </tr>
       <% end %>
     </tbody>
+  </div>
   <% else %>
     <!--検索対象モデルがUserではない時(= 検索対象モデルがPostReviewの時) -->
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.nickname %></td>
+          <td><%= image_tag user.get_profile_image(100,100) %></td>
+          <th>
+            <%= user.nickname %></td>
+            <p class="font-weight-normal"><%= user.sex %> / <%= user.age %>歳</p>
+          </th>
+          <td><%= user.personal_color_i18n %></td>
+          <td><%= user.skin_quality_i18n %></td>
         </tr>
       <% end %>
     </tbody>
   <% end %>
 </table>
+</div>
