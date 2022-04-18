@@ -3,23 +3,23 @@
     Everyone's Reccomend <p class="small">-みんなのベスコス投稿-</p>
   </h2>
 
-<% @post_reviews.each do |post_review| %>
+  <div class="row">
 
-<table class="table table-borderless">
+  <% @post_reviews.each do |post_review| %>
+  <table class="table table-hover table-invers">
   <tr>
-    <td>
-      <%= post_review.post.user.nickname %><br>
-      <%= post_review.post.created_at.strftime('%Y/%m/%d') %>
+    <td class="col-lg-2">
+      <%= image_tag post_review.post.user.get_profile_image(80,80) %><br>
+      <%= post_review.post.user.nickname %>
+      <p class="small"><%= post_review.post.created_at.strftime('%Y/%m/%d') %></p>
     </td>
-    <th><%= image_tag post_review.get_image, size: "100x100" %></th>
-    <th>
+    <th class="col-lg-1"><%= image_tag post_review.get_image, size: "100x100" %></th>
+    <th class="col-lg-3">
       <p><%= post_review.item_name %></p>
       <%= post_review.item_genre_i18n %> | <%= post_review.item_brand %>
     </th>
-    <td>
+    <td class="col-lg-2">
       <span  id="review_star-<%= post_review.id %>"></span>
-      <p><%= post_review.star %>点</p>
-    </td>
       <script>
       $('#review_star-<%= post_review.id %>').raty({
         size     : 36,
@@ -30,12 +30,14 @@
         half: true,
       });
       </script>
+      <p><%= post_review.star %>点</p>
+    </td>
 
-    <td><%= post_review.good_point %></td>
+    <td class="col-lg-4"><%= post_review.good_point %></td>
   </tr>
 </table>
-
 <% end %>
 
-<%= paginate @post_reviews %>
+  <div class="text-center text-secondary"><%= paginate @post_reviews %></div>
+  </div>
 </div>
