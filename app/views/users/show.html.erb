@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mb-5 mt-5">
     <div class="col-lg-5">
-      <h5 class="text-dark" style="padding: 1rem 2rem; border: 2px dotted #000;">* Profile *</h4>
+      <h5 class="text-dark" style="padding: 1rem 2rem; border: 2px dotted #000;">* Profile *</h5>
       <div><%= image_tag @user.get_profile_image(150,150) %></div>
 
       <table class="table-borderless mb-3">
@@ -29,7 +29,7 @@
     </div>
 
 <div class="col-lg-7">
-<h5 class="text-dark" style="padding: 1rem 2rem; border: 2px dotted #000;"><%= @user.nickname %>'s Reccomend item  -<%= @user.nickname %>の投稿履歴-</h2>
+<h5 class="text-dark" style="padding: 1rem 2rem; border: 2px dotted #000;"><%= @user.nickname %>'s Reccomend item  -<%= @user.nickname %>の投稿履歴-</h5>
 
 <% @posts.each do |post| %>
 <% post.post_reviews.each do |post_review| %>

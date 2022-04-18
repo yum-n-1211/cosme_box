@@ -1,4 +1,7 @@
-<h2>Everyone's Reccomend -みんなのベスコス投稿-</h2>
+<div class="container">
+  <h2 class="mb-3 mt-3 fw-normal text-center">
+    Everyone's Reccomend <p class="small">-みんなのベスコス投稿-</p>
+  </h2>
 
 <% @post_reviews.each do |post_review| %>
 
@@ -35,3 +38,4 @@
 <% end %>
 
 <%= paginate @post_reviews %>
+</div>

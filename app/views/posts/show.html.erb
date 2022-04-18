@@ -1,20 +1,34 @@
-<h2>Favorite COSME</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+  <h3 class="mb-1 mt-3 fw-normal text-center">Favorite COSME -ベスコス投稿-</h3>
 
-<%= @post.user.nickname %>
-投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %>
+ <div class="text-center">
+    <div class="d-lg-inline-flex">
+      <%= image_tag @post.user.get_profile_image(85,75), class:"rounded-circle" %>
+    <div class="col-lg-8">
+      <%= @post.user.nickname %>
+      <p class="small">
+        <%= @post.user.personal_color_i18n %> / <%= @post.user.skin_quality_i18n %><br>
+        投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %>
+      </p>
+    </div>
+    </div>
+ </div>
 
-
+<div class="border">
 <% @post_reviews.each do |post_review| %>
-<table class="table-sm table-borderless">
+<table class="table-sm table-borderless justify-content-center">
   <tr>
-    <th><%= image_tag post_review.get_image, size: "50x50" %></th>
-    <th class="strong"><%= post_review.item_name %></th>
-    <th><%= post_review.item_genre_i18n %> | <%= post_review.item_brand %></th>
-    <th id="review_star-<%= post_review.id %>"><%= post_review.star %>点</th>
-
+    <th class="col-lg-2"><%= image_tag post_review.get_image, size: "50x50" %></th>
+    <th class="col-lg-3">
+      <p class="text-lg"><%= post_review.item_name %></p>
+      <p class="small"><%= post_review.item_genre_i18n %> | <%= post_review.item_brand %></p>
+    </th class="col-lg-3">
+    <th id="review_star-<%= post_review.id %>">
       <script>
       $('#review_star-<%= post_review.id %>').raty({
-        size     : 36,
+        size     : 20,
         starOff:  '<%= asset_path('star-off.png') %>',
         starOn : '<%= asset_path('star-on.png') %>',
         starHalf: '<%= asset_path('star-half.png') %>',
@@ -22,19 +36,26 @@
         half: true,
       });
       </script>
-
-    <th><%= post_review.good_point %></th>
+      <p class="small"><%= post_review.star %>点</p>
+    </th>
+    <th class="col-lg-4 small"><%= post_review.good_point %></th>
   </tr>
 </table>
 <% end %>
+</div>
 
 <!--いいね機能で部分的に更新したい場所-->
-<div class="likes_buttons_<%= @post.id %>">
+<div class="likes_buttons_<%= @post.id %> lead text-right">
   <%= render 'likes/like', post: @post %>
 </div>
 
 
+<div class="text-center">
 <%= link_to "https://twitter.com/share?url=#{request.url}&text=リンク", class: 'icon-twitter', data: { show_count: false }, target: '_blank' do %>
-  <i class="fab fa-twitter-square"></i>
-<% end %>
-<p>Twitterにシェア</p>
+  <i class="fab fa-twitter-square fa-3x"></i>
+<% end %><p>Twitterにシェア</p>
+</div>
+
+</div>
+</div>
+</div>
