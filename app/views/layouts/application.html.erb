@@ -41,9 +41,9 @@
             <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |fs| %>
               <%= fs.hidden_field :range, :value => "User" %>
               <%= fs.label :"パーソナルカラー", class:"small" %>
-              <%= fs.select :personal_color, User.personal_colors_i18n.invert.to_a, include_blank: true, class:"small" %>
+              <%= fs.select :personal_color, User.personal_colors_i18n.invert.map{|key, value| [key, User.personal_colors[value]]}, include_blank: true, class:"small" %>
               <%= fs.label :" 肌タイプ", class:"small" %>
-              <%= fs.select :skin_quality, User.skin_qualities_i18n.invert.to_a, include_blank: true, class:"small" %><br>
+              <%= fs.select :skin_quality, User.skin_qualities_i18n.invert.map{|key, value| [key, User.skin_qualities[value]]}, include_blank: true, class:"small" %><br>
               <div class="text-right">
               <i class="fas fa-search"></i>
               <%= fs.text_field :keyword1, :placeholder =>"キーワードで検索", class:"small" %>
@@ -55,7 +55,7 @@
               <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
                 <%= f.hidden_field :range, :value => "PostReview" %>
                 <%= f.label :"カテゴリ", class:"small" %>
-                <%= f.select :item_genre, PostReview.item_genres_i18n.invert.to_a, include_blank: true, class:"small" %>
+                <%= f.select :item_genre, PostReview.item_genres_i18n.invert.map{|key, value| [key, PostReview.item_genres[value]]}, include_blank: true, class:"small" %>
                 <i class="fas fa-search"> </i><%= f.text_field :keyword2, :placeholder =>"キーワードで検索", class:"small" %><br>
                 <div class="text-right"><%= f.submit "アイテム検索", class:"btn-sm btn-secondary text-right" %></div>
               <% end %>

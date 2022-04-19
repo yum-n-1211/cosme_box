@@ -18,7 +18,7 @@
         </tr>
         <tr>
           <td>genre -カテゴリ-</td>
-          <td><%= fs.select :item_genre, PostReview.item_genres_i18n.invert, {prompt: '選択してください'} , class:"form_control" %></td>
+          <td><%= fs.select :item_genre, PostReview.item_genres_i18n.invert.map{|key, value| [key, PostReview.item_genres[value]]}, {prompt: '選択してください'} , class:"form_control" %></td>
         </tr>
         <tr>
           <td>brand -ブランド-</td>

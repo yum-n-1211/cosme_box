@@ -12,7 +12,7 @@ class SearchesController < ApplicationController
   end
 
   def search_params
-    params.fetch(:search, {}).permit(:range, [:personal_color].to_s, [:skin_quality].to_s, :keyword2, [:item_genre].to_s, :keyword1)
+    params.fetch(:search, {}).permit(:range, :personal_color, :skin_quality, :keyword2, :item_genre, :keyword1)
     #fetch(:search, {})と記述することで、検索フォームに値がない場合はnilを返し、エラーが起こらなくなる
     #ここでの:searchには、フォームから送られてくるparamsの値が入っている
   end

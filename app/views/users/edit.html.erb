@@ -28,7 +28,7 @@
   </tr>
   <tr>
     <td><%= f.label :"肌タイプ" %></td>
-    <th class="field"><%= f.select :skin_quality, User.skin_qualities.keys_i18n.invert.to_a, {prompt: '選択してください'} %></th>
+    <th class="field"><%= f.select :skin_quality, User.skin_qualities_i18n.invert.map{|key, value| [key, User.skin_qualities[value]]}, {prompt: '選択してください'} %></th>
   </tr>
   <tr>
     <td><%= f.label :"ひとこと" %></td>
