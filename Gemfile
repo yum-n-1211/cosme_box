@@ -61,7 +61,6 @@ gem 'enum_help'
 gem 'dotenv-rails'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem 'image_processing', '~> 1.2'
-# gem "refile-mini_magick"
 gem 'kaminari','~> 1.2.1'
 gem 'rails-i18n'
 gem 'omniauth', '1.9.1'

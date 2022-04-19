@@ -33,14 +33,14 @@
     </div>
 
   <div class="col-lg-6">
-    <h4 class="text-dark" style="padding: 1rem 2rem; border: 2px dotted #000;">♡ Favorite ♡</h4>
+    <h4 class="text-dark" style="padding: 1rem 2rem; border: 2px dotted #000;">♡ Favorite ♡ -Like!した投稿-</h4>
 
     <% if @like_list.present? %>
       <% @like_list.each do |post| %>
-      <div class="border">
+      <div class="border mt-3">
         <% post.post_reviews.each do |post_review| %>
           <%= image_tag post_review.get_image, size: "50x50" %>
-          <%= post_review.item_name %>
+          <%= post_review.item_name %><br>
         <% end %>
       </div>
       <% end %>

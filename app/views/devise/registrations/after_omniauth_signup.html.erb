@@ -1,7 +1,11 @@
-<h2>追加情報登録</h2>
+<div class="container">
+  <h3 class="mb-3 mt-3 fw-normal text-center">New User -ユーザー追加情報登録-</h3>
+
+<div class="row justify-content-center">
 
 <%= form_with model: @user, url: user_registration_path do |f| %>
 
+  <%= f.file_field :profile_image, placeholder: "profile画像", accept: "image/*" %>
   <div class="field">
     <%= f.label :"ニックネーム" %><br />
     <%= f.text_field :nickname %>
@@ -19,12 +23,12 @@
 
   <div class="field">
     <%= f.label :"パーソナルカラー" %><br />
-    <%= f.select :personal_color, User.personal_colors.keys, {prompt: '選択してください'} %>
+    <%= f.select :personal_color, User.personal_colors_i18n.invert.map{|key, value| [key, User.personal_colors[value]]}, {prompt: '選択してください'} %>
   </div>
 
   <div class="field">
     <%= f.label :"肌タイプ" %><br />
-    <%= f.select :skin_quality, User.skin_qualities.keys, {prompt: '選択してください'} %>
+    <%= f.select :skin_quality, User.skin_qualities_i18n.invert.map{|key, value| [key, User.skin_qualities[value]]}, {prompt: '選択してください'} %>
   </div>
 
   <div class="field">
@@ -32,7 +36,7 @@
     <%= f.text_field :introduction %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+  <div class="actions text-center mt-3 mb-3"><%= f.submit "　登　録　", class:"btn-sm btn-info" %></div>
 <% end %>
+  </div>
+</div>

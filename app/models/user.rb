@@ -3,7 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         # Twitter API認証用に追加
          :omniauthable, omniauth_providers: [:twitter]
 
   has_one_attached :profile_image
@@ -42,7 +41,7 @@ class User < ApplicationRecord
   end
 
   scope :search, -> (search_params) do      #scopeでsearchメソッドを定義。(search_params)は引数
-    return if search_params.blank? #検索フォームに値がなければ以下の手順は行わない
+    return if search_params.blank?          #検索フォームに値がなければ以下の手順は行わない
 
     personal_color(search_params[:personal_color]).skin_quality(search_params[:skin_quality])
     .keyword1(search_params[:keyword1]).range(search_params[:range]) #下記で定義しているscopeメソッドの呼び出し。「.」で繋げている
@@ -54,5 +53,4 @@ class User < ApplicationRecord
   scope :range, -> (range) {}
  #scope :メソッド名 -> (引数) { SQL文 }
  #if 引数.present?をつけることで、検索フォームに値がない場合は実行されない
-
 end
