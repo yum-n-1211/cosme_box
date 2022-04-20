@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    likes = Like.where(user_id: current_user.id).pluck(:post_id)
+    likes = Like.where(user_id: current_user.id).pluck( :post_id)
     @like_list = Post.find(likes)
   end
 
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :birthday, :sex, :personal_color, :skin_quality, :introduction, :profile_image)
+    params.require(:user).permit(:nickname, :birthday, :sex, [:personal_color].to_s, [:skin_quality].to_s, :introduction, :profile_image, :email)
   end
 
 end

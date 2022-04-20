@@ -44,16 +44,18 @@
 <% end %>
 </div>
 
-<!--いいね機能で部分的に更新したい場所-->
-<div class="likes_buttons_<%= @post.id %> lead text-right">
-  <%= render 'likes/like', post: @post %>
-</div>
+<% if user_signed_in? %>
+  <!--いいね機能で部分的に更新したい場所-->
+  <div class="likes_buttons_<%= @post.id %> lead text-right">
+    <%= render 'likes/like', post: @post %>
+  </div>
 
-<div class="text-center">
-<%= link_to "https://twitter.com/share?url=#{request.url}&text=リンク", class: 'icon-twitter', data: { show_count: false }, target: '_blank' do %>
-  <i class="fab fa-twitter-square fa-3x"></i>
-<% end %><p>Twitterにシェア</p>
-</div>
+  <div class="text-center">
+    <%= link_to "https://twitter.com/share?url=#{request.url}&text=リンク", class: 'icon-twitter', data: { show_count: false }, target: '_blank' do %>
+      <i class="fab fa-twitter-square fa-3x"></i>
+    <% end %><p>Twitterにシェア</p>
+  </div>
+<% end %>
 
 </div>
 </div>

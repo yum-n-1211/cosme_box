@@ -28,7 +28,10 @@
           <th><%= @user.introduction %></th>
         </tr>
       </table>
-      <p><%= link_to "ユーザー情報編集", user_edit_information_path, class:"btn-sm btn-info" %></p>
+      <p>
+        <%= link_to "ユーザー情報編集", user_edit_information_path, class:"btn-sm btn-info" %>
+        <%= link_to "投稿履歴を確認", user_path(@user.id), class:"btn-sm btn-success" %>
+      </p>
       <p><%= link_to "退会", confirm_unsubscribe_path, class:"btn-sm btn-dark" %></p>
     </div>
 
@@ -44,6 +47,9 @@
         <% end %>
       </div>
       <% end %>
+    <% else %>
+     <p class="text-center mt-5">まだ　♡ like ボタンを活用していません。<br>
+     気になる投稿に　♡like してみましょう♩</p>
     <% end %>
   </div>
 </div>

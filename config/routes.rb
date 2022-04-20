@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   patch 'users/information' => 'users#update', as: 'user_update_information'
   get 'users/unsubscribe' => 'users#unsubscribe', as: 'confirm_unsubscribe'
   patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
-  get 'users/:id' => 'users#show', as: 'user_path'
+  get 'users/:id' => 'users#show', as: 'user'
   get   'contacts'         => 'contacts#index'
   get  'contacts/confirm' => 'contacts#confirm'
   post  'contacts/thanks'  => 'contacts#thanks'
