@@ -2,15 +2,15 @@
   <h3 class="mb-2 mt-3 fw-normal text-center">New Post -新規投稿-</h3>
   <p class="text-center text-dark mb-3">今のベストコスメ５品をみんなにシェアしましょう♩</p>
 
-  <div class="row">
+  <div class="row justify-content-center">
     <%= form_with model: @post, url: posts_path, local:true do |f| %>
     <%= f.fields_for :post_reviews do |fs| %>
-    <div class="d-lg-inline-flex border mr-2 mb-3">
+    <div class="border mr-2 mb-3">
     <table class="table-sm">
       <tbody>
         <tr>
           <td>image -画像-</td>
-          <td><%= f.label :image, "image", class:"btn btn-secondary" %><%= f.file_field :image, accept: "image/*", class:"d-none" %></td>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
         </tr>
         <tr>
           <td>name -商品名-</td>

@@ -2,12 +2,13 @@ class ContactsController < ApplicationController
 
   def index
     @contact = Contact.new
+    render :action => 'index'
   end
 
   def confirm
     @contact = Contact.new(params[:contact].permit(:name, :email, :message))
     if @contact.valid?
-      render 'confirm'
+      render :action => 'confirm'
     else
       render 'index'
     end

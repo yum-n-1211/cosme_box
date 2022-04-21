@@ -25,7 +25,8 @@
       <p class="text-lg"><%= post_review.item_name %></p>
       <p class="small"><%= post_review.item_genre_i18n %> | <%= post_review.item_brand %></p>
     </th class="col-lg-3">
-    <th id="review_star-<%= post_review.id %>">
+    <th>
+      <span  id="review_star-<%= post_review.id %>"></span>
       <script>
       $('#review_star-<%= post_review.id %>').raty({
         size     : 20,

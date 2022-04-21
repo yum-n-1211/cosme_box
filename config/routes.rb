@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
   get 'users/:id' => 'users#show', as: 'user'
   get   'contacts'         => 'contacts#index'
-  get  'contacts/confirm' => 'contacts#confirm'
+  post  'contacts/confirm' => 'contacts#confirm'
   post  'contacts/thanks'  => 'contacts#thanks'
   resources :posts, only: [:new, :create, :show ,:edit, :update,] do
     resource :likes, only: [:create, :destroy]

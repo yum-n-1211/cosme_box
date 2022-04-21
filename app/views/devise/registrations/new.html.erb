@@ -11,7 +11,7 @@
     <th class="field col-lg-6"><%= f.text_field :nickname %></th>
   </tr>
   <tr>
-    <td><%= f.label :"生年月日" %></td>
+    <td><%= f.label :"生年月日(西暦込みの8桁数値)" %></td>
     <th class="field"><%= f.text_field :birthday %></th>
   </tr>
   <tr>
@@ -20,11 +20,11 @@
   </tr>
   <tr>
     <td><%= f.label :"パーソナルカラー" %></td>
-    <th class="field"><%= f.select :personal_color, User.personal_colors_i18n.invert.map{|key, value| [key, User.personal_colors[value]]}, {prompt: '選択してください'} %></th>
+    <th class="field"><%= f.select :personal_color, User.personal_colors_i18n.invert, {prompt: '選択してください'} %></th>
   </tr>
   <tr>
     <td><%= f.label :"肌タイプ" %></td>
-    <th class="field"><%= f.select :skin_quality, User.skin_qualities_i18n.invert.map{|key, value| [key, User.skin_qualities[value]]}, {prompt: '選択してください'} %></th>
+    <th class="field"><%= f.select :skin_quality, User.skin_qualities_i18n.invert, {prompt: '選択してください'} %></th>
   </tr>
   <tr>
     <td><%= f.label :"ひとこと" %></td>

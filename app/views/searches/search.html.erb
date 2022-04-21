@@ -9,7 +9,7 @@
       <tr>
         <td class="col-lg-2"><%= image_tag post_review.get_image, size: "100x100" %></td>
         <td class="col-lg-3 font-weight-bold">
-          <%= post_review.item_name %><br>
+          <%= link_to post_review.item_name, post_path(post_review.post.id) %><br>
           <p class="font-weight-normal"><%= post_review.item_genre_i18n %> / <%= post_review.item_brand %></p>
         </td>
         <td class="col-lg-2" id="review_star-<%= post_review.id %>">
@@ -36,7 +36,7 @@
         <tr>
           <td><%= image_tag user.get_profile_image(100,100) %></td>
           <th>
-            <%= user.nickname %></td>
+            <%= link_to user.nickname, user_path(user.id) %></td>
             <p class="font-weight-normal"><%= user.sex %> / <%= user.age %>歳</p>
           </th>
           <td><%= user.personal_color_i18n %></td>
