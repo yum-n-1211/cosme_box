@@ -1,15 +1,26 @@
 <div class="container">
   <h3 class="mb-3 mt-3 fw-normal text-center">Edit Post -投稿編集-</h3>
 
+  <% if @post.errors.any? %>
+  <div class="text-center bg-warning">
+  <%= @post.errors.count %>件のエラーが発生しました
+  <ul class="list-unstyled">
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  </div>
+  <% end %>
+
   <div class="row">
-    <%= form_with model: @post, url: edit_post_path, local:true do |f| %>
+    <%= form_with model: @post, url: post_path(@post.id), local:true do |f| %>
     <%= f.fields_for :post_reviews do |fs| %>
     <div class="d-lg-inline-flex border mr-2 mb-3">
     <table class="table-sm">
       <tbody>
         <tr>
           <td>image -画像-</td>
-          <td><%= f.label :image, "image", class:"btn btn-secondary" %><%= f.file_field :image, accept: "image/*", class:"d-none" %></td>
+          <td><%= fs.label :image, "image", class:"btn btn-secondary" %><%= fs.file_field :image, accept: "image/*", class:"d-none" %></td>
         </tr>
         <tr>
           <td>name -商品名-</td>

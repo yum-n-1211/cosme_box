@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      user: "ユーザー"
+    attributes:
+      user:
+        nickname: "ユーザー名"
+        sex: "性別"
+        birthday: "生年月日"
+        personal_color: "パーソナルカラー"
+        skin_quality: "肌タイプ"
+        email: "メールアドレス"
+        password: "パスワード"
+    models:
+      post_review: "投稿"
+    attributes:
+      post_review:
+        item_name: "商品名"
+        item_genre: "カテゴリ"
+        item_brand: "ブランド"
+        star: "評価"
+        good_point: "コメント"

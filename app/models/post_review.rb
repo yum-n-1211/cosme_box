@@ -1,7 +1,12 @@
 class PostReview < ApplicationRecord
-
   belongs_to :post
   has_one_attached :image
+
+  validates :item_name, presence: true, length: {maximum:25}
+  validates :item_genre, presence: true
+  validates :item_brand, presence: true, length: {maximum:50}
+  validates :star, presence: true
+  validates :good_point, presence: true, length: {maximum:100}
 
   enum item_genre: {
     skincare: 0, base1: 1, base2: 2, base3: 3, mascara: 4, eyeshadow: 5, eyeliner: 6, cheek: 7, lip: 8, body: 9, uv: 10, nail: 11, perfume: 12,

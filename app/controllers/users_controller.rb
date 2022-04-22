@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
 
   def mypage
     @user = current_user
@@ -17,8 +18,11 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(user_params)
-    redirect_to mypage_path
+    if @user.update(user_params)
+      redirect_to mypage_path
+    else
+      render :edit
+    end
   end
 
   def unsubscribe

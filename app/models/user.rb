@@ -9,6 +9,13 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  validates :nickname, presence: true, length: {minimum:3}
+  validates :birthday, presence: true
+  validates :sex, presence: true
+  validates :personal_color, presence: true
+  validates :skin_quality, presence: true
+  validates :email, presence: true, uniqueness: true
+
   enum sex: { woman: 0, man: 1 }
   enum personal_color: { spring: 0, summer: 1, autumn: 2, winter: 3, unknown: 4 }
   enum skin_quality: { normal: 0, dry: 1, oily: 2, mixed: 3, notclear: 4 }

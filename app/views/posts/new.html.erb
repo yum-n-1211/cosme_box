@@ -2,6 +2,17 @@
   <h3 class="mb-2 mt-3 fw-normal text-center">New Post -新規投稿-</h3>
   <p class="text-center text-dark mb-3">今のベストコスメ５品をみんなにシェアしましょう♩</p>
 
+  <% if @post.errors.any? %>
+  <div class="text-center bg-warning">
+  <%= @post.errors.count %>件のエラーが発生しました
+  <ul class="list-unstyled">
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  </div>
+  <% end %>
+
   <div class="row justify-content-center">
     <%= form_with model: @post, url: posts_path, local:true do |f| %>
     <%= f.fields_for :post_reviews do |fs| %>
@@ -10,7 +21,7 @@
       <tbody>
         <tr>
           <td>image -画像-</td>
-          <td><%= f.file_field :image, accept: "image/*" %></td>
+          <td><%= fs.file_field :image, accept: "image/*" %></td>
         </tr>
         <tr>
           <td>name -商品名-</td>
@@ -18,7 +29,7 @@
         </tr>
         <tr>
           <td>genre -カテゴリ-</td>
-          <td><%= fs.select :item_genre, PostReview.item_genres_i18n.invert.map{|key, value| [key, PostReview.item_genres[value]]}, {prompt: '選択してください'} , class:"form_control" %></td>
+          <td><%= fs.select :item_genre, PostReview.item_genres.keys.map {|k| [I18n.t("enums.post_review.item_genre.#{k}"), k]}, {prompt: '選択してください'} , class:"form_control" %></td>
         </tr>
         <tr>
           <td>brand -ブランド-</td>

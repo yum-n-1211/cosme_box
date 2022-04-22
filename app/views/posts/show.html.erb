@@ -3,7 +3,7 @@
     <div class="col-lg-8">
   <h3 class="mb-1 mt-3 fw-normal text-center">Favorite COSME -ベスコス投稿-</h3>
 
- <div class="text-center">
+  <div class="text-center">
     <div class="d-lg-inline-flex">
       <%= image_tag @post.user.get_profile_image(85,75), class:"rounded-circle" %>
     <div class="col-lg-8">
@@ -14,13 +14,18 @@
       </p>
     </div>
     </div>
- </div>
+  </div>
+  <div class="text-right mb-1">
+    <% if @post.user == current_user %>
+    　<%= link_to "編集", edit_post_path(@post.id), class:'btn-sm btn-info' %>
+    <% end %>
+  </div>
 
 <div class="border">
 <% @post_reviews.each do |post_review| %>
 <table class="table-sm table-borderless justify-content-center">
   <tr>
-    <th class="col-lg-2"><%= image_tag post_review.get_image, size: "50x50" %></th>
+    <th class="col-lg-2"><%= image_tag post_review.get_image, size: "80x80" %></th>
     <th class="col-lg-3">
       <p class="text-lg"><%= post_review.item_name %></p>
       <p class="small"><%= post_review.item_genre_i18n %> | <%= post_review.item_brand %></p>

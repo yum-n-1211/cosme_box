@@ -36,19 +36,18 @@
 
 <table class="table table-borderless">
   <tr>
-    <th><%= image_tag post_review.get_image, size: "100x100" %></th>
-    <th>
-      <p><%= post_review.item_name %></p>
+    <th class="col-lg-1"><%= image_tag post_review.get_image, size: "50x50" %></th>
+    <td class="col-lg-5">
+      <p><%= link_to post_review.item_name, post_path(post_review.post.id) %></p>
       <p><%= post_review.item_genre_i18n %> | <%= post_review.item_brand %></p>
       <%= post.created_at.strftime('%Y/%m/%d') %>
-    </th>
-    <td>
-      <span  id="review_star-<%= post_review.id %>"></span>
-      <p><%= post_review.star %>点</p>
     </td>
+    <td class="col-lg-6">
+      <span  id="review_star-<%= post_review.id %>"></span>
+      <p class="small"><%= post_review.star %>点</p>
       <script>
       $('#review_star-<%= post_review.id %>').raty({
-        size     : 15,
+        size     : 5,
         starOff:  '<%= asset_path('star-off.png') %>',
         starOn : '<%= asset_path('star-on.png') %>',
         starHalf: '<%= asset_path('star-half.png') %>',
@@ -56,8 +55,8 @@
         half: true,
       });
       </script>
-
-    <td><%= post_review.good_point %></td>
+      <p><%= post_review.good_point %></p>
+    </td>
   </tr>
 </table>
 
