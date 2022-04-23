@@ -26,7 +26,7 @@
 自分のお気に入りコスメを誰かに共有したい時、新たなコスメを探している時
 
 ## 設計書
-<...>
+<https://docs.google.com/spreadsheets/d/1xKTsxIK1pRknpa6l-VdhE_rbR2Kf3UrXohoLjsv_ElU/edit?usp=sharing>
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1Co9B9Y5uas1tssJmHYxAcm_QHIjH5KNX_5BsYlnaLmk/edit?usp=sharing>
