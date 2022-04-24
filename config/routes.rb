@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     :omniauth_callbacks => 'users/omniauth_callbacks',
   }
 
-  root to: 'homes#top'
+  get '/' => 'homes#top', as: 'root'
   get '/about' => 'homes#about', as: 'about'
   get 'users/mypage' => 'users#mypage', as: 'mypage' do
     get :likes, on: :collection
