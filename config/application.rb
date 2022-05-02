@@ -23,9 +23,9 @@ module CosmeBox
     config.i18n.load_path += Dir[Rails.root.join('config/locales/models/*.yml').to_s]
     config.i18n.load_path += Dir[Rails.root.join('config/locales/*.yml').to_s]
 
-    Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "images")
-    Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets")
-    Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "javascripts")
+    Rails.application.config.assets.paths << Rails.root.join("public", "assets", "images")
+    Rails.application.config.assets.paths << Rails.root.join("public", "assets", "stylesheets")
+    Rails.application.config.assets.paths << Rails.root.join("public", "assets", "javascripts")
 
   end
 end
