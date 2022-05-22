@@ -104,6 +104,7 @@ GEM
     enum_help (0.0.18)
       activesupport (>= 3.0.0)
     erubi (1.10.0)
+    execjs (2.8.1)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
@@ -282,6 +283,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    uglifier (4.2.0)
+      execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.1)
@@ -334,6 +337,7 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
+  uglifier
   web-console (>= 4.1.0)
   webpacker (~> 5.0)
 
