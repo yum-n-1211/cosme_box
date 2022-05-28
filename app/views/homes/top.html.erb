@@ -9,7 +9,7 @@
   <table class="table table-hover table-invers">
   <tr>
     <td class="col-lg-2">
-      <%= image_tag post_review.post.user.get_profile_image(80,80), class:"rounded-circle" %><br>
+      <%= image_tag post_review.post.user.get_profile_image(90,80), class:"rounded-circle" %><br>
       <%= link_to post_review.post.user.nickname, user_path(post_review.post.user.id) %>
       <p class="small"><%= post_review.post.created_at.strftime('%Y/%m/%d') %></p>
     </td>
