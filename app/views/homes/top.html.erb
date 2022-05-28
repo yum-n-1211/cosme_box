@@ -13,7 +13,7 @@
       <%= link_to post_review.post.user.nickname, user_path(post_review.post.user.id) %>
       <p class="small"><%= post_review.post.created_at.strftime('%Y/%m/%d') %></p>
     </td>
-    <th class="col-lg-1"><%= image_tag post_review.get_image, size: "100x100" %></th>
+    <th class="col-lg-1"><%= image_tag post_review.get_image, size: "100x100", class:"rounded-circle" %></th>
     <th class="col-lg-3">
       <p><%= link_to post_review.item_name, post_path(post_review.post.id) %></p>
       <%= post_review.item_genre_i18n %> | <%= post_review.item_brand %>
