@@ -30,6 +30,22 @@ ja:
         perfume: "香水"
         hair: "ヘアケア"
   activerecord:
+    attributes:
+      user:
+        nickname: "名前"
+        email: "メールアドレス"
+        birthday: "誕生日"
+        password: "パスワード"
+        personal_color: "パーソナルカラー"
+        skin_quality: "肌タイプ"
+      post:
+        post_reviews: "投稿"
+      post/post_reviews:
+        item_name: "商品名"
+        item_genre: "カテゴリ"
+        item_brand: "ブランド"
+        star: "評価"
+        good_point: "コメント"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -234,3 +250,4 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
