@@ -25,7 +25,7 @@
 <% @post_reviews.each do |post_review| %>
 <table class="table-sm table-borderless justify-content-center">
   <tr>
-    <th class="col-lg-2"><%= image_tag post_review.get_image, size: "80x80" %></th>
+    <th class="col-lg-2"><%= image_tag post_review.get_image, class: "middle_thumbnail" %></th>
     <th class="col-lg-3">
       <p class="text-lg"><%= post_review.item_name %></p>
       <p class="small"><%= post_review.item_genre_i18n %> | <%= post_review.item_brand %></p>
@@ -34,6 +34,7 @@
       <span  id="review_star-<%= post_review.id %>"></span>
       <script>
       $('#review_star-<%= post_review.id %>').raty({
+        readOnly: true,
         size     : 20,
         starOff:  '<%= asset_path('star-off.png') %>',
         starOn : '<%= asset_path('star-on.png') %>',

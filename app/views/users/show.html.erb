@@ -36,7 +36,7 @@
 
 <table class="table table-borderless">
   <tr>
-    <th class="col-lg-1"><%= image_tag post_review.get_image, size: "50x50" %></th>
+    <th class="col-lg-1"><%= image_tag post_review.get_image, class:"mini_thumbnail" %></th>
     <td class="col-lg-5">
       <p><%= link_to post_review.item_name, post_path(post_review.post.id) %></p>
       <p><%= post_review.item_genre_i18n %> | <%= post_review.item_brand %></p>
@@ -47,6 +47,7 @@
       <p class="small"><%= post_review.star %>点</p>
       <script>
       $('#review_star-<%= post_review.id %>').raty({
+        readOnly: true,
         size     : 5,
         starOff:  '<%= asset_path('star-off.png') %>',
         starOn : '<%= asset_path('star-on.png') %>',
