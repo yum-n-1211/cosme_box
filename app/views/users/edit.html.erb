@@ -1,5 +1,8 @@
 <div class="container">
   <h3 class="mb-3 fw-normal text-center">Edit User -ユーザー情報編集-</h3>
+  <div class="text-center">
+    <p class="text-danger">*<span class="small text-muted"> 必須項目です。</span></p>
+  </div>
 
 <div class="row justify-content-center">
 
@@ -8,33 +11,41 @@
 <table class="table-sm table-borderless">
   <tr>
     <td></td>
+    <td></td>
     <th><%= f.file_field :profile_image, placeholder: "profile画像", accept: "image/*" %></th>
   </tr>
   <tr>
+    <td><p class="text-danger">*</p></td>
     <td class="col-lg-4"><%= f.label :"ユーザー名" %></td>
     <th class="field col-lg-6"><%= f.text_field :nickname %></th>
   </tr>
   <tr>
+    <td><p class="text-danger">*</p></td>
     <td><%= f.label :"生年月日" %></td>
     <th class="field"><%= f.text_field :birthday %></th>
   </tr>
   <tr>
+    <td><p class="text-danger">*</p></td>
     <td><%= f.label :"性別" %></td>
     <th class="field"><%= f.select :sex, User.sexes.keys, {prompt: '選択してください'} %></th>
   </tr>
   <tr>
+    <td><p class="text-danger">*</p></td>
     <td><%= f.label :"パーソナルカラー" %></td>
     <th class="field"><%= f.select :personal_color, User.personal_colors_i18n.invert.map{|key, value| [key, User.personal_colors[value]]}, {prompt: '選択してください'} %></th>
   </tr>
   <tr>
+    <td><p class="text-danger">*</p></td>
     <td><%= f.label :"肌タイプ" %></td>
     <th class="field"><%= f.select :skin_quality, User.skin_qualities_i18n.invert.map{|key, value| [key, User.skin_qualities[value]]}, {prompt: '選択してください'} %></th>
   </tr>
   <tr>
+    <td></td>
     <td><%= f.label :"ひとこと" %></td>
     <th class="field"><%= f.text_field :introduction %></th>
   </tr>
   <tr>
+    <td><p class="text-danger">*</p></td>
     <td><%= f.label :"メールアドレス" %></td>
     <th class="field"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></th>
   </tr>

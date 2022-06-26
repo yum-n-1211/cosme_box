@@ -1,5 +1,8 @@
 <div class="container">
   <h3 class="mb-3 fw-normal text-center">Edit Post -投稿編集-</h3>
+  <div class="text-center">
+    <p class="text-danger">*<span class="small text-muted"> 必須項目です。</span></p>
+  </div>
 
   <% if @post.errors.any? %>
   <div class="text-center bg-warning">
@@ -19,28 +22,34 @@
     <table class="table-sm">
       <tbody>
         <tr>
+          <td><p class="text-danger">*</p></td>
           <td>image -画像-</td>
           <td><%= fs.label :image, "image", class:"btn btn-secondary" %><%= fs.file_field :image, accept: "image/*", class:"d-none" %></td>
         </tr>
         <tr>
+          <td><p class="text-danger">*</p></td>
           <td>name -商品名-</td>
           <td><%= fs.text_field :item_name, class:"form_control" %></td>
         </tr>
         <tr>
+          <td><p class="text-danger">*</p></td>
           <td>genre -カテゴリ-</td>
           <td><%= fs.select :item_genre, PostReview.item_genres_i18n.invert, {prompt: '選択してください'} , class:"form_control" %></td>
         </tr>
         <tr>
+          <td><p class="text-danger">*</p></td>
           <td>brand -ブランド-</td>
           <td><%= fs.text_field :item_brand, class:"form_control" %></td>
         </tr>
         <tr>
           <td>
+            <td><p class="text-danger">*</p></td>
             star -評価-<br><p class="small">0.5刻み/満点5点</p>
             <td><%= fs.select :star, [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5], class: "form_control" %></td>
           </td>
         </tr>
         <tr>
+          <td></td>
           <td>review -コメント-</td>
           <td><%= fs.text_field :good_point, class:"form_control" %></td>
         </tr>
